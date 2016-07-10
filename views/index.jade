@@ -1,0 +1,28 @@
+extends layouts/main
+
+block content
+	.container-fluid
+		.row
+			.col-md-12(style={"padding-left":"0px","padding-right":"0px","position":"relative"}) 
+				img.img-responsive(src="/static/images/LPBackground.svg",alt="slogon",height="50%") 
+				div.text-center(style={"position":"absolute","top":"20%","width":"100%"})
+					h1 something want to show in the fisrt glance
+					h2 maybe something remarkable to everyone
+
+		.row.bg-primary
+			.col-md-10.col-md-offset-1 
+				.row
+					.col-md-12 
+						h3 成功案例
+				.row
+					.col-md-2 
+						+school-thumbnail("/static/images/schools/andalue.jpg","#","西安大略大学WU全奖录取【加拿大】","西安大略大学","1")
+					.col-md-2 
+						+school-thumbnail("/static/images/schools/andalue.jpg","#","a","as","ad")
+					.col-md-3
+						+school-thumbnail("/static/images/schools/andalue.jpg","#","a","as","ad")
+					.col-md-2 
+						+school-thumbnail("/static/images/schools/andalue.jpg","#","西安大略大学WU全奖录取【加拿大】","西安大略大学","1")
+					.col-md-2 
+						+school-thumbnail("/static/images/schools/andalue.jpg","#","a","as","ad")
+		.row

@@ -1,0 +1,14 @@
+mixin  thumbnail(image,href,alt)
+	- var href = href||"#";
+	a.thumbnail(href=href,title=alt,class=["btn","btn-default truncate"]) 
+		img(src=image)
+		block
+
+mixin  school-thumbnail(image,href,scTitle,enrollBy,rank)
+	+thumbnail(image,href,scTitle)
+		-var attr ={"text-overflow": "ellipsis", "white-space": "pre-wrap", "overflow": "hidden"}; 
+		strong.text-left(style=attr)=scTitle
+		br
+		small.text-left 录取院校：#{enrollBy}
+		br
+		small.text-left [综合排名第#{rank}位]
