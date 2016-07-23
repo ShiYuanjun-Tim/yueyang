@@ -1,0 +1,130 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T06:06:09.909Z"
+    },
+    {
+      "id": 3,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T06:09:22.189Z"
+    },
+    {
+      "id": 4,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T06:09:31.930Z"
+    },
+    {
+      "id": 5,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T06:09:37.486Z"
+    },
+    {
+      "id": 6,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T08:47:30.450Z"
+    },
+    {
+      "id": 7,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T08:51:13.804Z"
+    },
+    {
+      "id": 8,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T08:57:44.916Z"
+    },
+    {
+      "id": 9,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T08:58:13.973Z"
+    },
+    {
+      "id": 10,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T08:58:14.511Z"
+    },
+    {
+      "id": 11,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T08:58:46.774Z"
+    },
+    {
+      "id": 12,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T10:07:10.845Z"
+    },
+    {
+      "id": 13,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T10:24:01.523Z"
+    },
+    {
+      "id": 14,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T10:25:00.408Z"
+    },
+    {
+      "id": 15,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T10:26:28.556Z"
+    },
+    {
+      "id": 16,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T10:26:30.385Z"
+    },
+    {
+      "id": 17,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T10:27:00.510Z"
+    },
+    {
+      "id": 18,
+      "title": "simple post",
+      "boolean": true,
+      "number": 123,
+      "date": "2016-07-23T10:27:45.521Z"
+    }
+  ],
+  "user": {
+    "name": "typicode"
+  }
+}
