@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node   ./bin/www",
-    "postinstall": "bower  install  jade-bootstrap"
+    "debug":"DEBUG=yueyang:* node   ./bin/www | bunyan",
+    "devs": "webpack-dev-server --inline --port 3001"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
-    "bower": "^1.7.9",
     "bunyan": "^1.8.1",
     "compression": "^1.6.2",
     "cookie-parser": "~1.4.3",
@@ -18,6 +18,19 @@
     "jade": "~1.11.0",
     "lodash": "^4.13.1",
     "lowdb": "^0.13.1",
+    "node-uuid": "^1.4.7",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "react-hot-loader": "^1.3.0",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-react": "^6.0.15",
+    "babel-preset-stage-0": "^6.0.15",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }

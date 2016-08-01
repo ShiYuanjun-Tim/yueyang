@@ -4,26 +4,13 @@ var router = express.Router();
 var db=require("../service/dataAccess.js");
 /* GET all data. */
 router.get('/', function(req, res, next) {
-   res.send(db.read())
+   res.render("admin/index")
 });
 
-//add a data
- var id= db.get("posts").size().value();
-
-router.get('/add', function(req, res, next) {
-   db.get("posts").push( 
-   		{
-   			"id":(++id),
-			"title":"simple post",
-			"boolean":true,
-			"number":123,
-			 "date":new Date()
-		}
- ).value();
-
-  res.log.debug(" posts size => "+db.get("posts").size().value())
-   db.write()
-    .then(() => res.send(db.read()))
+router.get('/test', function(req, res, next) {
+   res.render("admin/index")
 });
+
+ 
 
 module.exports = router;

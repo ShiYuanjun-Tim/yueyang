@@ -17,8 +17,10 @@ if("prod"==env){
 	        ];
  
 }else{
-	option.stream=process.stdout,
-        	option.level='debug'
+	option.stream=process.stdout;
+        	option.level='debug';
+        	// WARNING: Determining the call source info is slow. Never use this option in production.
+        	option.src=true;
 }
 /*
  log has following methods
@@ -31,4 +33,8 @@ if("prod"==env){
 */
 var log=bunyan.createLogger(option);
 
-module.exports=log
+module.exports.log=log
+module.exports.createLogger=function(name){
+	option.name=name||option.name;
+	bunyan.createLogger(option)
+}

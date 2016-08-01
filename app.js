@@ -3,11 +3,15 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var log = require("./service/logger");
+var log = require("./service/logger").log;
+var uuid = require('node-uuid');
+var env = require('get-env')({
+    dev:["dev","development"],
+    prod: ['prod', 'production']
+});
 // var compression = require('compression');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var admin = require('./routes/admin');
 
 var app = express();
@@ -18,7 +22,9 @@ app.set('view engine', 'jade');
 
 //add the log to request chain, add addtional info for time and ip
 app.use(function (req, res, next) {
+  log.info("new request "+req.originalUrl);
         res.log = log.child({ 
+            req_id:uuid(),
             ip:req.ip,
             url:req.originalUrl
         },true);
@@ -34,10 +40,8 @@ app.use(cookieParser());
 app.use('/static',express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/admin', admin);
 
- 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -50,7 +54,7 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
+if (env!== 'prod') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -58,6 +62,7 @@ if (app.get('env') === 'development') {
       error: err
     });
   });
+ 
 }
 
 // production error handler
@@ -69,6 +74,8 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
 
 
 module.exports = app;
