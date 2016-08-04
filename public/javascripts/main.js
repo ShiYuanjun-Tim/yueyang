@@ -8,11 +8,23 @@
 		 	    },{
 		 	          rank:1,
 		 	          title:"iAMAZIING ",
+		 	    },{
+		 	          title:"i Test 1 ",    
+		 	    },{
+		 	          title:"i Test 2 ",    
+		 	    },{
+		 	          title:"i Test3  ",    
 		 	    }];
+		  
+
  		return ( 
- 		< div > 
- 			<OfferEditor/>
- 			<OfferHome offers={offers}/>
+ 		< div className="row"> 
+ 			<div className="col-md-12">
+ 				<OfferEditor/>	
+ 			</div>
+ 			<div className="col-md-12">
+ 				<OfferHome offers={offers}/>
+ 			</div>
  		 < /div>
  		 );
  	}
@@ -21,10 +33,21 @@
  var OfferEditor = React.createClass({
  	render() {
  		return (
- 			<form>
-			  <input type="text" placeholder="The School Name..." />
-			   
-			</form>
+ 			<div className="row">
+	 			<div className="col-md-8">
+	 				<form>
+					  <input type="text" placeholder="The School Name..." /><br/>
+					  <input type="text" placeholder="The School Name..." /><br/>
+					  <input type="text" placeholder="The School Name..." /><br/>
+					  <input type="text" placeholder="The School Name..." />
+				</form>
+	 			</div>
+	 			<div className="col-md-3">
+	 				<StatefulOffer/>
+ 				</div>
+ 			 	
+ 			</div>
+ 			
  			);
  	}
  });
@@ -39,10 +62,10 @@
  	render() {
  		var offerTobeAdd=[];
 		this.props.offers.forEach(function(offer){
-			offerTobeAdd.push(<Offer  {...offer}/>);
+			offerTobeAdd.push(<div className="col-md-2"><Offer  {...offer}/></div>);
 		});		
  		return ( 
- 			< div > 
+ 			< div className="row"> 
  				<h3> All Offers List :</h3>
  			 	{offerTobeAdd}
  			 < /div>
@@ -50,19 +73,20 @@
  	}
  });
 
- var Offer = React.createClass({
- 	getDefaultProps() {
-		 return {
+/*this is a static Offer without state, all input data is from props (refer to getDefaultProps) */
+const DEFAULT_PROP={
 		 	 enrollBySchool:"The School Name",
 		 	 rank:0,
 		 	 title:"i was luky to enter this school ",
 		 	 image:"/static/images/schools/andalue.jpg"
 		 };
+
+ var Offer = React.createClass({
+ 	getDefaultProps() {
+		 return DEFAULT_PROP;
 	  },
  	render() {
  		var  attr ={textOverflow: "ellipsis", whiteSpace: "pre-wrap", overflow: "hidden"}; 
- 		var enrollBy="fsdfsfs";
- 		var rank=1;
  		return ( 
  		<a href="#" className="btn btn-default truncate" className="thumbnail">
 			<img src={this.props.image} alt=""/>
@@ -73,13 +97,23 @@
  	}
  });
 
+var  StatefulOffer  = React.createClass({
+	getInitialState() {
+	    return {
+		 	          enrollBySchool:this.props.enrollBySchool ,
+		 	          rank: this.props.rank,
+		 	          title: this.props.title,
+		 	          image:this.props.image 
+		 	   }
+	},
+	render() {
+		return (
+			<Offer  {...this.state}/>
+		);
+	}
+});
 
-var aOffer={
-		 	          enrollBySchool:"The School Name",
-		 	          rank:0,
-		 	          title:"i was luky to enter this school ",
-		 	          image:"/static/images/schools/andalue.jpg"
-		 	    }
+ 
  
  ReactDOM.render(  <OfferWorkArea/>,
  	document.getElementById("reactContainer")
