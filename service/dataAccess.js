@@ -7,6 +7,8 @@ const db = low('data/db.json', {
   ,writeOnChange: false
 })
 
+db._.mixin(require('underscore-db'));
+
 // // Init, add info  of documents 
 db.defaults({ offers: [
 /*{

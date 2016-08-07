@@ -2,14 +2,50 @@ var express = require('express');
 var router = express.Router();
 
 var db=require("../service/dataAccess.js");
-/* GET all data. */
+/* page request. */
 router.get('/', function(req, res, next) {
    res.render("admin/index")
 });
 
-router.get('/test', function(req, res, next) {
-   res.render("admin/index")
+// data request
+/*
+get  -> /api/offers    get all offers
+get  -> /api/offer/{id}   get one offers
+post -> /api/offer/update
+post -> /api/offer/new
+get -> /api/offer/delete/{id}
+
+*/
+
+
+router.get('/api/offers', function(req, res, next) {
+ 	const offers=db.get("offers").value();
+ 	res.json(offers);
 });
+
+router.get('/api/offer/delete/:offerId', function(req, res, next) {
+	res.log.debug("parameters: ",req.params);
+ 	const offer=db.get("offers").remove({id:req.params.offerId}).value();
+ 	db.write().then(()=>{
+ 		res.json(offer);
+	})	
+ });
+
+router.post('/api/offer/update', function(req, res, next) {
+	res.log.debug("update offer:" ,req.body);
+ 	const offer=db.get("offers").find({id:req.body.id}).assign(req.body).value();
+ 	db.write().then(()=>{
+ 		res.json(offer);
+	})	
+ });
+
+router.post('/api/offer/new', function(req, res, next) {
+	res.log.debug("new offer:" ,req.body);
+ 	const offer=db.get("offers").insert(req.body).value();
+ 	db.write().then(()=>{
+ 		res.json(offer);
+	})	
+ });
 
  
 
