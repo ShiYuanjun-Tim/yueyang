@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var db=require("../service/dataAccess.js");
+var dao=require("../service/dataAccess.js");
+var db=dao.db;
 /* page request. */
 router.get('/', function(req, res, next) {
    res.render("admin/index")
@@ -19,7 +20,7 @@ get -> /api/offer/delete/{id}
 
 
 router.get('/api/offers', function(req, res, next) {
- 	const offers=db.get("offers").value();
+ 	const offers=dao.getAll("offers");
  	res.json(offers);
 });
 

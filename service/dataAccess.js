@@ -30,4 +30,10 @@ db.defaults({ offers: [
   .value()
  
 
-module.exports =db;
+module.exports ={
+  db:db,
+  getAll:(colletionName)=>db.get(colletionName).value(),
+  removeById:(collection,id)=>{db.get(collection).remove({id:id}).value();return db.write();},
+  updateById:(collection,id,object)=>{db.get(collection).find({id:id}).assign(object).value();return db.write();},
+  create:(collection,obj)=>{db.get(collection).insert(obj).value();return db.write();}
+};
