@@ -2,6 +2,12 @@ var React = require('react');
 var Pubsub=require("pubsub-js");
 var jq=require("jquery");
 
+const OPERATION={
+	"INSERT":0,
+	"DELETE":1,
+	"UPDATE":3
+}
+
  var OfferWorkArea = React.createClass({
  	getInitialState() {
  	    return   { offers:[]}; 
@@ -12,14 +18,33 @@ var jq=require("jquery");
   	    	this.setState({offers:data})
   	    });  
   	},
-  
+  	editorDone(operation,offer){
+  		var newList ;
+  		switch(operation){
+  			case OPERATION.INSERT:
+  				newList= [offer,...this.state.offers];
+  				break;
+  			case OPERATION.DELETE:
+  				var ind =this.state.offers.findIndex((ele)=>offer.id===ele.id);
+  				newList = [...this.state.offers]; 
+  				newList.splice(ind,1);
+  				break;
+  			case OPERATION.UPDATE:
+  				var ind =this.state.offers.findIndex((ele)=>offer.id===ele.id);
+  				newList = [...this.state.offers]; 
+  				newList.splice(ind,1,offer);
+  				break;
+  		}
+  		
+  		this.setState({offers:newList})
+  	},
  	render() {
  		 
 
  		return ( 
  		< div className="row"> 
  			<div className="col-md-12">
- 				<OfferEditor    /> 	
+ 				<OfferEditor  update={this.editorDone}   /> 	
  			</div>
  			<div className="col-md-12">
  				<OfferHome offers={this.state.offers}  />
@@ -55,22 +80,27 @@ var jq=require("jquery");
 	},
 
  	update(){
- 		jq.when( jq.post( "/admin/api/offer/update",this.state ) ).then(function( data, textStatus, jqXHR ) {
-		  alert("update")
+ 		jq.when( jq.post( "/admin/api/offer/update",this.state ) ).then( ( data, textStatus, jqXHR )=> {
+		   this.props.update(OPERATION.UPDATE,data)
 		});
  	},
  	remove(){
- 		jq.when( jq.ajax( "/admin/api/offer/delete/"+this.state.id ) ).then(function( data, textStatus, jqXHR ) {
-		  alert("delete")
+ 		jq.when( jq.ajax( "/admin/api/offer/delete/"+this.state.id ) ).then( ( data, textStatus, jqXHR )=> {
+		  console.log(data,"delete")
+		  // the delete result is a array
+ 		  this.props.update(OPERATION.DELETE,data[0])
 		});
  	},
  	insert(){
- 		jq.when( jq.post( "/admin/api/offer/update",this.state ) ).then(function( data, textStatus, jqXHR ) {
-		  alert(1)
+ 		var {id,...data} = this.state;
+ 		jq.when( jq.post( "/admin/api/offer/new",data ) ).then(( data, textStatus, jqXHR )=>{
+		   console.log(data,"insert");
+		   this.props.update(OPERATION.INSERT,data)
 		});
  	},
 
  	render() {
+ 		var margin={marginRight:25}
  		return (
  			<div className="row">
 	 			<div className="col-md-5">
@@ -92,9 +122,9 @@ var jq=require("jquery");
 							 <input  className="form-control col-md-9" type="text"  onChange={this.handleChange} data-prop="image" value={this.state.image}/>
 						</div>	 	
 						<div className="form-group">
-						    	<input className="btn btn-primary" type="button" value="New Offer" onClick={this.insert}/> 
-			 				<input className="btn btn-danger" type="button" value="Delete Offer" onClick={this.remove}/> 
-			 				<input className="btn btn-warning" type="button" value="Update Offer"  onClick={this.update}/>
+						    	<input className="btn btn-primary" type="button" value="New Offer" style={margin} onClick={this.insert}/> 
+			 				<input className="btn btn-danger" type="button" value="Delete Offer" style={margin} onClick={this.remove}/> 
+			 				<input className="btn btn-warning" type="button" value="Update Offer"  style={margin} onClick={this.update}/>
 						</div>	 
 					</form>
 	 			</div>
@@ -113,29 +143,37 @@ var jq=require("jquery");
  });
 
  
+ /* 
+ 	subscribe: offer.select -> let outside know one Offer is selected  
+	subscribe: offer.noSelect -> no offer is slected pass the last one
+
+ */
  var OfferHome = React.createClass({
  	getDefaultProps() {
  	    return {
  	          offers:[]
  	    };
  	},
- 	onSelect(offerObj){
+ 	onSelect(offerDom,data){
  		if(this.selected  ){
- 			if(this.selected==offerObj){
+ 			if(this.selected==offerDom){//unselected
  				this.selected=null;
- 			}else{
+ 				Pubsub.publish("offer.noSelect",data);
+ 			}else{//change seleceted
  				this.selected.reset();
- 				this.selected = offerObj;
+ 				this.selected = offerDom;
  			}
- 		}else{
- 			this.selected = offerObj;
+ 		}else{//new selected
+ 			this.selected = offerDom;
  		}
+ 		// notify others data
+	  	this.selected!=null&&Pubsub.publish("offer.select",data);
  	},
  	render() {
  		var offerTobeAdd=[];
  		var handler=this.onSelect;
 		this.props.offers.forEach(function(offer){
-			offerTobeAdd.push(<div key={offer.id} className="col-md-2"><Offer {...offer}  onSelect={handler}/></div>);
+			offerTobeAdd.push(<div key={offer.id} className="col-md-2"><Offer {...offer }  onSelect={handler}/></div>);
 		});
 
  		return ( 
@@ -157,8 +195,6 @@ const DEFAULT_OFFER={
 
 /*
  event:  onSelect(Offer)
-
- subscribe: offer.select
  */
  var Offer = React.createClass({
  	getInitialState() {
@@ -178,13 +214,11 @@ const DEFAULT_OFFER={
 			image:this.props.image,
 			id:this.props.id
 	  	};
-	  	// notify others data
-	  	Pubsub.publish("offer.select",offer);
 	  	// change css
 	  	var newState=!this.state.selected;
 	  	this.setState( {selected:newState});
 	  	//let owner contro
-	  	newState&&this.props.onSelect&&this.props.onSelect(this);
+	  	newState&&this.props.onSelect&&this.props.onSelect(this,offer);
 
 	  },
 	  reset(){

@@ -22,6 +22,7 @@ app.set('view engine', 'jade');
 
 //add the log to request chain, add addtional info for time and ip
 app.use(function (req, res, next) {
+  res.removeHeader("x-powered-by");
   log.info("new request "+req.originalUrl);
         res.log = log.child({ 
             req_id:uuid(),
