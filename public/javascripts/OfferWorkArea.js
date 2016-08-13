@@ -103,32 +103,37 @@ const OPERATION={
  		var margin={marginRight:25}
  		return (
  			<div className="row">
-	 			<div className="col-md-5">
+	 			<div className="col-md-6">
 	 				<form className="form-horizontal ">
 	 					  <div className="form-group">
 	 					  	<label className=" control-label ">Title</label>
-							  <input  className="form-control col-md-9" type="text" onChange={this.handleChange}   data-prop="title"  value={this.state.title}/>
+							  <input  className="form-control  " type="text" onChange={this.handleChange}   data-prop="title"  value={this.state.title}/>
 						</div>	
 						<div className="form-group">
 						  	<label className=" control-label ">School </label>
-							  <input  className="form-control col-md-9" type="text"  onChange={this.handleChange}  data-prop="enrollBySchool" value={this.state.enrollBySchool}/>
-						</div>	
+							  <input  className="form-control  " type="text"  onChange={this.handleChange}  data-prop="enrollBySchool" value={this.state.enrollBySchool}/>
+						</div>
+						 
 						<div className="form-group">
-						 	 <label className=" control-label ">Rank</label>
-							  <input  className="form-control col-md-9" type="number"  onChange={this.handleChange} data-prop="rank" value={this.state.rank} />
-						</div>	
-						<div className="form-group">
-						    	<label className=" control-label ">Image</label>
-							 <input  className="form-control col-md-9" type="text"  onChange={this.handleChange} data-prop="image" value={this.state.image}/>
+					 		 <label className=" control-label ">Rank</label>
+							  <input   className="form-control  " type="number"  onChange={this.handleChange} data-prop="rank" value={this.state.rank} />
 						</div>	 	
 						<div className="form-group">
-						    	<input className="btn btn-primary" type="button" value="New Offer" style={margin} onClick={this.insert}/> 
-			 				<input className="btn btn-danger" type="button" value="Delete Offer" style={margin} onClick={this.remove}/> 
-			 				<input className="btn btn-warning" type="button" value="Update Offer"  style={margin} onClick={this.update}/>
+						    	<label className=" control-label "  >Image</label>
+							 <input  className="form-control  " type="text"  onChange={this.handleChange} data-prop="image" value={this.state.image}/>					    	
 						</div>	 
 					</form>
-	 			</div>
-	 			<div className="col-md-3">
+					 
+					
+					<div>
+							<input className="btn btn-primary" type="button" value="New Offer" style={margin} onClick={this.insert}/> 
+			 				<input className="btn btn-danger" type="button" value="Delete Offer" style={margin} onClick={this.remove}/> 
+			 				<input className="btn btn-warning" type="button" value="Update Offer"  style={margin} onClick={this.update}/>
+					</div>
+
+				</div>
+
+	 			<div className="col-md-2">
 	 				
  				</div>
 	 			<div className="col-md-3">

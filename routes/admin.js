@@ -7,6 +7,9 @@ var db=dao.db;
 router.get('/', function(req, res, next) {
    res.render("admin/index")
 });
+router.get('/dev', function(req, res, next) {
+   res.render("admin/adminDev")
+});
 
 // data request
 /*

@@ -1,32 +1,18 @@
 {
   "offers": [
     {
-      "enrollBySchool": "Updated School Name ",
-      "rank": "50",
-      "title": "WWWWWW",
-      "image": "/static/images/schools/andalue.jpg",
-      "id": "31d63e85-05ad-4498-9bd0-4581062898a6"
-    },
-    {
-      "enrollBySchool": "Updated School Name ",
-      "rank": "46",
-      "title": "XXXXXX",
-      "image": "/static/images/schools/andalue.jpg",
-      "id": "c4eb5a30-2621-4cc7-8774-dd309d7d393c"
-    },
-    {
-      "enrollBySchool": "Updated School Name ",
-      "rank": "50",
-      "title": "This updateed tile ",
+      "enrollBySchool": "DB School Name FF",
+      "rank": "0",
+      "title": "i was luky to enter DB",
       "image": "/static/images/schools/andalue.jpg",
       "id": "fsdfsdfsdfsf"
     },
     {
-      "enrollBySchool": "Updated School Name ",
-      "rank": "50",
-      "title": "CCCCC",
+      "enrollBySchool": "updated",
+      "rank": "0",
+      "title": "inserted one ",
       "image": "/static/images/schools/andalue.jpg",
-      "id": "6197a813-961d-4fda-a74e-3813cba10935"
+      "id": "6bac0731-e9fa-44cd-ae1f-1b61f15c6ae7"
     }
   ],
   "user": {
