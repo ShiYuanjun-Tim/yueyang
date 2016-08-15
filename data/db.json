@@ -3,16 +3,30 @@
     {
       "enrollBySchool": "DB School Name FF",
       "rank": "0",
-      "title": "i was luky to enter DB",
-      "image": "/static/images/schools/andalue.jpg",
+      "title": "i was luky to enter DBdasd   ssasda 大三的啊",
+      "image": "/images/schools/andalue.jpg",
       "id": "fsdfsdfsdfsf"
     },
     {
       "enrollBySchool": "updated",
       "rank": "0",
       "title": "inserted one ",
-      "image": "/static/images/schools/andalue.jpg",
+      "image": "/images/schools/andalue.jpg",
       "id": "6bac0731-e9fa-44cd-ae1f-1b61f15c6ae7"
+    },
+    {
+      "enrollBySchool": "DB School Name FF",
+      "rank": "0",
+      "title": "i was luky to enter DBdasd   ss",
+      "image": "/images/schools/andalue.jpg",
+      "id": "fcb3a998-2515-4c45-9e1c-f3a90f0c05cf"
+    },
+    {
+      "enrollBySchool": "DB School Name FF",
+      "rank": "0",
+      "title": "三分三  送的放松分大三的分三",
+      "image": "/images/schools/andalue.jpg",
+      "id": "b8c94bb1-2ab7-4def-9ba3-af8d64968536"
     }
   ],
   "user": {

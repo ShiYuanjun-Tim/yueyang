@@ -11,6 +11,8 @@ var env = require('get-env')({
 });
 // var compression = require('compression');
 
+log.warn("APP RUNING IN "+env +" MODE");
+
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
 
@@ -38,7 +40,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/static',express.static(path.join(__dirname, 'public')));
+app.use('/',express.static(path.join(__dirname, 'public'))); 
 
 app.use('/', routes);
 app.use('/admin', admin);
