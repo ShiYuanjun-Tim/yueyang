@@ -4,33 +4,110 @@
       "enrollBySchool": "DB School Name FF",
       "rank": "0",
       "title": "i was luky to enter DBdasd   ssasda 大三的啊",
-      "image": "/images/schools/andalue.jpg",
+      "image": "/img/schools/波士顿学院.png",
       "id": "fsdfsdfsdfsf"
     },
     {
       "enrollBySchool": "updated",
       "rank": "0",
       "title": "inserted one ",
-      "image": "/images/schools/andalue.jpg",
+      "image": "/img/schools/华盛顿路易斯安那大学.jpg",
       "id": "6bac0731-e9fa-44cd-ae1f-1b61f15c6ae7"
     },
     {
       "enrollBySchool": "DB School Name FF",
       "rank": "0",
       "title": "i was luky to enter DBdasd   ss",
-      "image": "/images/schools/andalue.jpg",
+      "image": "/img/schools/英国约克大学.png",
       "id": "fcb3a998-2515-4c45-9e1c-f3a90f0c05cf"
     },
     {
       "enrollBySchool": "DB School Name FF",
       "rank": "0",
       "title": "三分三  送的放松分大三的分三",
-      "image": "/images/schools/andalue.jpg",
+      "image": "/img/schools/宾夕法尼亚州立大学.jpg",
       "id": "b8c94bb1-2ab7-4def-9ba3-af8d64968536"
     }
   ],
   "user": {
     "name": "aa",
     "pass": ""
-  }
+  },
+  "schoolsImage": [
+    {
+      "id": "img1",
+      "name": "宾夕法尼亚州立大学",
+      "path": "/img/schools/宾夕法尼亚州立大学.jpg"
+    },
+    {
+      "id": "img2",
+      "name": "波士顿学院",
+      "path": "/img/schools/波士顿学院.png"
+    },
+    {
+      "id": "img3",
+      "name": "德克萨斯大学",
+      "path": "/img/schools/德克萨斯大学.png"
+    },
+    {
+      "id": "img4",
+      "name": "哥伦比亚大学",
+      "path": "/img/schools/哥伦比亚大学.jpg"
+    },
+    {
+      "id": "img5",
+      "name": "华盛顿路易斯安那大学",
+      "path": "/img/schools/华盛顿路易斯安那大学.jpg"
+    },
+    {
+      "id": "img6",
+      "name": "加州大学",
+      "path": "/img/schools/加州大学.png"
+    },
+    {
+      "id": "img7",
+      "name": "凯尼休斯学院",
+      "path": "/img/schools/凯尼休斯学院.jpg"
+    },
+    {
+      "id": "img8",
+      "name": "罗彻斯特大学",
+      "path": "/img/schools/罗彻斯特大学.jpg"
+    },
+    {
+      "id": "img9",
+      "name": "美国东北大学",
+      "path": "/img/schools/美国东北大学.jpg"
+    },
+    {
+      "id": "img10",
+      "name": "美国加州艺术学院",
+      "path": "/img/schools/美国加州艺术学院.jpg"
+    },
+    {
+      "id": "img11",
+      "name": "密西根州立大学",
+      "path": "/img/schools/密西根州立大学.png"
+    },
+    {
+      "id": "img12",
+      "name": "纽约大学",
+      "path": "/img/schools/纽约大学.png"
+    },
+    {
+      "id": "img13",
+      "name": "沙特克圣玛丽高中",
+      "path": "/img/schools/沙特克圣玛丽高中.png"
+    },
+    {
+      "id": "img14",
+      "name": "英国约克大学",
+      "path": "/img/schools/英国约克大学.png"
+    },
+    {
+      "id": "img15",
+      "name": "约翰霍普金斯大学",
+      "path": "/img/schools/约翰霍普金斯大学.jpg"
+    }
+  ]
 }

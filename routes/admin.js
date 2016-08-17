@@ -51,6 +51,11 @@ router.post('/api/offer/new', function(req, res, next) {
 	})	
  });
 
- 
+router.get('/api/schoolImgs', function(req, res, next) {
+	 
+ 	const scs=dao.getAll("schoolsImage");
+ 	res.json(scs);
+	 	
+ });
 
 module.exports = router;

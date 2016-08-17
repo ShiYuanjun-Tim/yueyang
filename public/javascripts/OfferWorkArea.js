@@ -42,14 +42,14 @@ const OPERATION={
  		 
 
  		return ( 
- 		< div className="row"> 
+ 		<div className="row"> 
  			<div className="col-md-12">
  				<OfferEditor  update={this.editorDone}   /> 	
  			</div>
  			<div className="col-md-12">
  				<OfferHome offers={this.state.offers}  />
  			</div>
- 		 < /div>
+ 		 </div>
  		 );
  	}
  });
@@ -78,7 +78,9 @@ const OPERATION={
 		state[e.target.dataset.prop]=e.target.value;
 		this.setState(state)
 	},
-
+	schoolChange(path){
+		this.setState({image:path})
+	},
  	update(){
  		jq.when( jq.post( "/admin/api/offer/update",this.state ) ).then( ( data, textStatus, jqXHR )=> {
 		   this.props.update(OPERATION.UPDATE,data)
@@ -119,8 +121,8 @@ const OPERATION={
 							  <input   className="form-control  " type="number"  onChange={this.handleChange} data-prop="rank" value={this.state.rank} />
 						</div>	 	
 						<div className="form-group">
-						    	<label className=" control-label "  >Image</label>
-							 <input  className="form-control  " type="text"  onChange={this.handleChange} data-prop="image" value={this.state.image}/>					    	
+						    	<label className=" control-label "  >School</label>
+							<SchoolSelect selected={this.state.image} onChange={this.schoolChange}/>
 						</div>	 
 					</form>
 					 
@@ -146,8 +148,41 @@ const OPERATION={
  			);
  	}
  });
-
  
+
+var SchoolSelect = React.createClass({
+	imgs:[],
+	getDefaultProps() {
+		return {selected:"/img/case.jpg"};
+	},
+	componentDidMount() {
+		  jq.get("/admin/api/schoolImgs").done((data)=>{
+	  		console.log(data);
+	  		this.imgs=data;
+	  		
+  		});  
+	},
+
+	onchange(e){
+
+		this.props.onChange&&this.props.onChange(e.target.value);
+	},
+	render() {
+		var options=[];
+		this.imgs.forEach((img)=>{
+			options.push(<option key={img.id} value={img.path}>{img.name}</option>)
+		});
+		return (
+			 <select className="form-control" value={this.props.selected}  onChange={this.onchange}>
+			 <option value="/img/case.jpg">Default</option>
+			 {options}
+			 </select>
+		);
+	}
+});
+
+
+
  /* 
  	subscribe: offer.select -> let outside know one Offer is selected  
 	subscribe: offer.noSelect -> no offer is slected pass the last one
@@ -195,7 +230,7 @@ const DEFAULT_OFFER={
 		 	 enrollBySchool:"  School Name",
 		 	 rank:0,
 		 	 title:"i was luky !!! ",
-		 	 image:"/static/images/schools/andalue.jpg"
+		 	 image:"/img/case.jpg"
 		 };
 
 /*
