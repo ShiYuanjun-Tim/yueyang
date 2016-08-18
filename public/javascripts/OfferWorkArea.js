@@ -14,7 +14,7 @@ const OPERATION={
  	},
   	componentDidMount() {
   	    jq.get("/admin/api/offers").done((data)=>{
-  	    	console.log(data);
+  	    	//console.log(data);
   	    	this.setState({offers:data})
   	    });  
   	},
@@ -57,16 +57,17 @@ const OPERATION={
  var OfferEditor = React.createClass({
  	getInitialState() {
 	    return {
-		 	          enrollBySchool:this.props.enrollBySchool ||"",
+		 	          originalSchool:this.props.originalSchool ||"",
 		 	          rank: this.props.rank||0,
-		 	          title: this.props.title||"",
-		 	          image:this.props.image ||"",
+		 	          major:this.props.major||"",
+		 	          name: this.props.name||"",
+		 	          schoolImage:this.props.schoolImage ||"",
 		 	          id:null
 		 	   }
 	},
 	 componentWillMount() {
 	       this.pubsub_token=Pubsub.subscribe("offer.select",(topic,offer)=>{
-	       	console.log(offer)
+	       	//console.log(offer)
 	       	this.setState(offer);
 	       });
 	 },
@@ -78,8 +79,8 @@ const OPERATION={
 		state[e.target.dataset.prop]=e.target.value;
 		this.setState(state)
 	},
-	schoolChange(path){
-		this.setState({image:path})
+	schoolChange(img){
+		this.setState({schoolImage:img.path,originalSchool:img.name})
 	},
  	update(){
  		jq.when( jq.post( "/admin/api/offer/update",this.state ) ).then( ( data, textStatus, jqXHR )=> {
@@ -88,7 +89,7 @@ const OPERATION={
  	},
  	remove(){
  		jq.when( jq.ajax( "/admin/api/offer/delete/"+this.state.id ) ).then( ( data, textStatus, jqXHR )=> {
-		  console.log(data,"delete")
+		  //console.log(data,"delete")
 		  // the delete result is a array
  		  this.props.update(OPERATION.DELETE,data[0])
 		});
@@ -96,7 +97,7 @@ const OPERATION={
  	insert(){
  		var {id,...data} = this.state;
  		jq.when( jq.post( "/admin/api/offer/new",data ) ).then(( data, textStatus, jqXHR )=>{
-		   console.log(data,"insert");
+		   //console.log(data,"insert");
 		   this.props.update(OPERATION.INSERT,data)
 		});
  	},
@@ -108,21 +109,25 @@ const OPERATION={
 	 			<div className="col-md-6">
 	 				<form className="form-horizontal ">
 	 					  <div className="form-group">
-	 					  	<label className=" control-label ">Title</label>
-							  <input  className="form-control  " type="text" onChange={this.handleChange}   data-prop="title"  value={this.state.title}/>
+	 					  	<label className=" control-label ">Name</label>
+							  <input  className="form-control  " type="text" onChange={this.handleChange}   data-prop="name"  value={this.state.name}/>
 						</div>	
-						<div className="form-group">
+						{/*<div className="form-group">
 						  	<label className=" control-label ">School </label>
-							  <input  className="form-control  " type="text"  onChange={this.handleChange}  data-prop="enrollBySchool" value={this.state.enrollBySchool}/>
+							  <input  className="form-control  " type="text"  onChange={this.handleChange}  data-prop="originalSchool" value={this.state.originalSchool}/>
 						</div>
 						 
 						<div className="form-group">
 					 		 <label className=" control-label ">Rank</label>
 							  <input   className="form-control  " type="number"  onChange={this.handleChange} data-prop="rank" value={this.state.rank} />
-						</div>	 	
+						</div>	 	*/}
 						<div className="form-group">
-						    	<label className=" control-label "  >School</label>
-							<SchoolSelect selected={this.state.image} onChange={this.schoolChange}/>
+							<label className=" control-label "  >School</label>
+							<SchoolSelect selected={this.state.schoolImage} onChange={this.schoolChange}/>
+						</div>	
+						<div className="form-group">
+							<label className=" control-label "  >Major</label>
+							<input  className="form-control  " type="text"  onChange={this.handleChange} data-prop="major" value={this.state.major}/>
 						</div>	 
 					</form>
 					 
@@ -157,20 +162,23 @@ var SchoolSelect = React.createClass({
 	},
 	componentDidMount() {
 		  jq.get("/admin/api/schoolImgs").done((data)=>{
-	  		console.log(data);
+	  		//console.log(data);
 	  		this.imgs=data;
 	  		
   		});  
 	},
 
 	onchange(e){
-
-		this.props.onChange&&this.props.onChange(e.target.value);
+		var id = e.target.selectedOptions[0].dataset.id;
+		var img = this.imgs.find((ele)=>{
+			return ele.id===id
+		});
+		this.props.onChange&&this.props.onChange(img);
 	},
 	render() {
 		var options=[];
-		this.imgs.forEach((img)=>{
-			options.push(<option key={img.id} value={img.path}>{img.name}</option>)
+		this.imgs.forEach((img,index)=>{
+			options.push(<option key={img.id} value={img.path} data-id={img.id}>{img.name}</option>)
 		});
 		return (
 			 <select className="form-control" value={this.props.selected}  onChange={this.onchange}>
@@ -227,10 +235,11 @@ var SchoolSelect = React.createClass({
 
 /*this is a static Offer without state, all input data is from props (refer to getDefaultProps) */
 const DEFAULT_OFFER={
-		 	 enrollBySchool:"  School Name",
+		 	 originalSchool:"  School Name",
 		 	 rank:0,
-		 	 title:"i was luky !!! ",
-		 	 image:"/img/case.jpg"
+		 	 name:"i was luky !!! ",
+		 	 major:"CODING",
+		 	 schoolImage:"/img/case.jpg"
 		 };
 
 /*
@@ -248,10 +257,11 @@ const DEFAULT_OFFER={
 	  handleClick(){
 	  	var offer=//this.props.offer;
 	  	{
-	  		title:this.props.title,
-	  		enrollBySchool:this.props.enrollBySchool,
+	  		name:this.props.name,
+	  		originalSchool:this.props.originalSchool,
 			rank:this.props.rank,
-			image:this.props.image,
+			major:this.props.major,
+			schoolImage:this.props.schoolImage,
 			id:this.props.id
 	  	};
 	  	// change css
@@ -269,10 +279,11 @@ const DEFAULT_OFFER={
  		var style=this.state.selected?{backgroundColor:"#c3b3d9"}:{};
  		return ( 
  		<a href="#" className="btn btn-default truncate" className="thumbnail " style={style}  onClick={this.handleClick}>
-			<img src={this.props.image} alt=""/>
-			<strong className="text-left" style={attr}>{this.props.title}</strong><br/>
-			<small className="text-left">录取院校：{this.props.enrollBySchool}</small><br/>
-			<small className="text-left">综合排名第{this.props.rank}位</small>
+			<img src={this.props.schoolImage} alt=""/>
+			<strong className="text-left" style={attr}>{this.props.name}</strong><br/>
+			<small className="text-left">录取院校：{this.props.originalSchool}</small><br/>
+			{/*<small className="text-left">综合排名第{this.props.rank}位</small>*/}
+			<small className="text-left">录取专业 : {this.props.major}</small>
 		</a>);
  	}
  });

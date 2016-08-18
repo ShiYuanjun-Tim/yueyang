@@ -1,32 +1,28 @@
 {
   "offers": [
     {
-      "enrollBySchool": "DB School Name FF",
+      "originalSchool": "加州大学",
       "rank": "0",
-      "title": "i was luky to enter DBdasd   ssasda 大三的啊",
-      "image": "/img/schools/波士顿学院.png",
-      "id": "fsdfsdfsdfsf"
+      "major": "aaaaaaaaa",
+      "name": "Tim5555",
+      "schoolImage": "/img/schools/加州大学.png",
+      "id": "b2bc1e3c-619d-43e6-9aa7-1514dbb01775"
     },
     {
-      "enrollBySchool": "updated",
+      "originalSchool": "波士顿学院",
       "rank": "0",
-      "title": "inserted one ",
-      "image": "/img/schools/华盛顿路易斯安那大学.jpg",
-      "id": "6bac0731-e9fa-44cd-ae1f-1b61f15c6ae7"
+      "major": "几排",
+      "name": "Tim",
+      "schoolImage": "/img/schools/波士顿学院.png",
+      "id": "500ca740-14b8-4ff7-9a50-31837fa8398b"
     },
     {
-      "enrollBySchool": "DB School Name FF",
+      "originalSchool": "罗彻斯特大学",
       "rank": "0",
-      "title": "i was luky to enter DBdasd   ss",
-      "image": "/img/schools/英国约克大学.png",
-      "id": "fcb3a998-2515-4c45-9e1c-f3a90f0c05cf"
-    },
-    {
-      "enrollBySchool": "DB School Name FF",
-      "rank": "0",
-      "title": "三分三  送的放松分大三的分三",
-      "image": "/img/schools/宾夕法尼亚州立大学.jpg",
-      "id": "b8c94bb1-2ab7-4def-9ba3-af8d64968536"
+      "major": "几排",
+      "name": "Tim",
+      "schoolImage": "/img/schools/罗彻斯特大学.jpg",
+      "id": "7ac4dbcf-f928-43de-9a08-946d04c0150a"
     }
   ],
   "user": {
