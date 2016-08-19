@@ -1,10 +1,9 @@
-var ReactDOM = require('react-dom');
-var React = require('react');
+import React from "react";
+import  { render } from 'react-dom';
 
-var OfferWorkArea = require("./OfferWorkArea")
- 
- ReactDOM.render(  <OfferWorkArea/>,
- 	document.getElementById("reactContainer")
- );
+import OfferWorkArea from "./OfferWorkArea" 
 
-  // document.write("sww")
+render(  <OfferWorkArea/>,
+	document.getElementById("reactContainer")
+);
+

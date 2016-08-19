@@ -1,6 +1,6 @@
-var React = require('react');
-var Pubsub=require("pubsub-js");
-var jq=require("jquery");
+import React from "react";
+import Pubsub from "pubsub-js";
+import jq from "jquery";
 
 const OPERATION={
 	"INSERT":0,
@@ -289,6 +289,4 @@ const DEFAULT_OFFER={
  });
  
 
- module.exports=OfferWorkArea;
-
- 
+ export default OfferWorkArea;
