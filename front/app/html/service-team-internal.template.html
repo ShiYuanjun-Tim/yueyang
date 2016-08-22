@@ -1,0 +1,26 @@
+<div class="service-team-internal">
+    <div class="internal-team-member" ng-repeat="data in datas">
+        <div ng-if="($index+1)%2">
+            <div class="left-wrapper">
+                <div class="left-content">
+                    <h3>{{data.title}}</h3>
+                    <p>{{data.content}}</p>
+                </div>
+            </div>
+            <div class="right-content">
+                <img ng-class="{'pull-left':!(($index+1)%2),'pull-right':($index+1)%2}" src="{{data.src}}" />
+            </div>
+        </div>
+        <div ng-if="$index%2">
+            <div class="left-content">
+                <img ng-class="{'pull-left':$index%2,'pull-right':!($index%2)}" src="{{data.src}}" />
+            </div>
+            <div class="right-wrapper">
+                <div class="right-content">
+                    <h3>{{data.title}}</h3>
+                    <p>{{data.content}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

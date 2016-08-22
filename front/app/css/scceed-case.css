@@ -1,0 +1,66 @@
+.samples {
+  width: 100%;
+  margin: 0 auto;
+}
+.samples .division-body {
+  overflow: hidden;
+  padding-top: 30px;
+  height: 720px;
+}
+.samples .division-body .case {
+  margin: 0 auto;
+  overflow: hidden;
+  width: 400px;
+  background: url(../img/case_bg.jpg) right top no-repeat;
+}
+.samples .division-body .case .left {
+  padding: 7px;
+  padding-top: 40px;
+  height: 283px;
+  float: left;
+  display: inline-block;
+  background: url(../img/case_bg.jpg) left top no-repeat;
+  width: 50%;
+}
+.samples .division-body .case .right {
+  padding: 7px;
+  padding-top: 40px;
+  height: 283px;
+  width: 50%;
+  display: inline-block;
+}
+.samples .division-body .case .case-img-wrapper {
+  text-align: center;
+  display: block;
+}
+.samples .division-body .case .case-img-wrapper img {
+  max-width: 200px;
+  max-height: 205px;
+  margin: 0 auto;
+}
+.samples .division-body .case .case-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: 微软雅黑;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+.samples .division-body .case .case-title a {
+  display: inline-block;
+  width: 100%;
+  padding-left: 10px;
+  text-decoration: none;
+  color: #161616;
+}
+.samples .division-body .case .pre-label {
+  display: inline-block;
+  width: 60px;
+}
+.samples .division-body .case .case-school {
+  padding-left: 10px;
+  font-size: 1.2rem;
+}
+.samples .division-body .case .case-range {
+  padding-left: 10px;
+  font-size: 1.2rem;
+}

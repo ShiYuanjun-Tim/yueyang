@@ -1,0 +1,31 @@
+<div class="samples">
+    <div class="division-title">
+        <div class="text">成功案例</div>
+    </div>
+    <div class="flipster division-body" ng-repeat="offers in offersArr">
+        <ul>
+            <li class="case" ng-repeat="offer in offers">
+                <div class="left">
+                    <a class="case-img-wrapper">
+                        <img src="{{offer.school.imgUrl}}"/>
+                    </a>
+                </div>
+                <div class="right">
+                    <div class="case-title">
+                        <a class="truncate">{{offer.name}}&nbsp;&nbsp;{{offer.originalSchool}}</a>
+                    </div>
+                    <p class="case-range" ng-repeat="(key, value) in offer.scores">
+                        <span class="pre-label">{{key}} </span>
+                        <strong>{{value}}</strong>
+                    </p>
+                    <p class="case-school">
+                        <span class="pre-label">录取院校：</span>
+                        <strong>{{offer.school.name}}</strong></p>
+                    <p class="case-range">
+                        <span class="pre-label">录取专业：</span>
+                        <strong>{{offer.school.major}}</strong></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

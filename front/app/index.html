@@ -1,0 +1,69 @@
+<!doctype html>
+<html  ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="cache-control" content="no-cache">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css({}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(app) styles/app.css -->
+  <!-- inject:css -->
+  <!--endinject-->
+  <!-- endbuild -->
+</head>
+<body ng-controller="MainCtrl">
+<nav role="navigation" class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#nav_yueyang" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">领悠文化</a>
+        </div>
+        <div id="nav_yueyang" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav">
+                <li class=" nav-item" ng-class="{active : isCurrent('introduction')}" ng-click="navTo('introduction')"><a href="#">首页</a></li>
+                <li class=" nav-item" ng-class="{active : isCurrent('office')}" ng-click="navTo('office')"><a href="">公司理念</a></li>
+                <li class=" nav-item" ng-class="{active : isCurrent('service-team')}" ng-click="navTo('service-team')"><a href="">服务团队</a></li>
+                <li class=" nav-item" ng-class="{active : isCurrent('succeed-case')}" ng-click="navTo('succeed-case')"><a href="">成功案例</a></li>
+                <li class=" nav-item" ng-class="{active : isCurrent('service-flow')}" ng-click="navTo('service-flow')"><a href="">服务流程</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="content-body">
+    <introduction></introduction>
+    <office></office>
+    <service-team></service-team>
+    <succeed-case></succeed-case>
+    <service-flow></service-flow>
+</div>
+<div class="footer">
+    <div class="text-content">
+        <p><span class="address-icon"></span>地址: 上海市徐家汇漕溪北路18号上海实业大厦29楼E1室</p>
+        <p><span class="phone-icon"></span>电话: 021-64276747</p>
+        <p><span class="address-icon"></span>地址: 南通市北大街108号万科金域商业T2楼1511-1512室</p>
+        <p><span class="phone-icon"></span>电话: 0513-55081553</p>
+        <img class="code" src="img/code.png" />
+    </div>
+</div>
+<!-- build:js({}) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<!-- endbuild -->
+<!-- build:js(app,.tmp) scripts/app.js -->
+<!-- inject:js -->
+<!--endinject-->
+<!-- htmlTemplateCache:js -->
+<!--endinject-->
+<!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,272 @@
+html body .content-body {
+  padding-top: 70px;
+  width: 900px;
+  margin: 0 auto;
+}
+.popover-content {
+  min-width: 150px;
+}
+.nav-item a {
+  font-weight: bold;
+  color: #000066;
+}
+.footer {
+  padding: 20px;
+  min-width: 900px;
+  background: #222;
+}
+.footer .text-content {
+  font-size: 20px;
+  color: #d4b4a9;
+  width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+.footer .text-content .code {
+  width: 150px;
+  position: absolute;
+  left: 600px;
+  top: 0;
+}
+.address-icon {
+  height: 16px;
+  width: 14px;
+  margin-left: 6px;
+  margin-right: 3px;
+  display: inline-block;
+  background-position: 0 -183px;
+  position: relative;
+  background-image: url(../img/icon/icons.png);
+  background-repeat: no-repeat;
+}
+.phone-icon {
+  height: 16px;
+  width: 14px;
+  margin-left: 7px;
+  display: inline-block;
+  background-position: 0 -234px;
+  background-image: url(../img/icon/icons.png);
+  background-repeat: no-repeat;
+}
+.truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.division-title {
+  height: 45px;
+  text-align: right;
+  font-family: 宋体;
+  border-bottom: 1px solid #d1d1d1;
+}
+.division-title .text {
+  text-align: left;
+  max-width: 190px;
+  padding-right: 15px;
+  height: 43px;
+  line-height: 43px;
+  color: #353535;
+  font-size: 2.4rem;
+  font-family: 微软雅黑;
+  font-weight: normal;
+  overflow: hidden;
+  border-bottom: 2px solid #0168b7;
+}
+.division-body {
+  position: relative;
+}
+.office {
+  width: 100%;
+  height: 1420px;
+  position: relative;
+}
+.office #screen {
+  position: relative;
+  left: 0;
+  top: 0px;
+  width: 100%;
+  height: 650px;
+  background: #fff;
+  overflow: hidden;
+  border: 1px solid #d1d1d1;
+}
+.office #screen img {
+  position: absolute;
+  cursor: pointer;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+}
+.office #screen .tvover {
+  border: solid #876;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.office #screen .tvout {
+  border: solid #fff;
+  opacity: 0.7;
+}
+.office #bankImages {
+  display: none;
+}
+.office .left-align-text,
+.office .right-align-text {
+  font-weight: bold;
+  line-height: 20px;
+  font-size: 18px;
+}
+.office .left-align-text {
+  width: 100%;
+  text-align: left;
+}
+.office .right-align-text {
+  width: 100%;
+  text-align: right;
+}
+.office svg {
+  width: 100%;
+  position: absolute;
+  height: 520px;
+}
+.office .svg-text {
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  display: table;
+  font-size: 7rem;
+  height: 300px;
+  color: #fcfcfc;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+}
+.office .svg-text p {
+  text-align: center;
+}
+.office .office-img {
+  position: absolute;
+}
+.introduction {
+  width: 100%;
+}
+.introduction .platform {
+  width: 100%;
+  position: relative;
+  height: 850px;
+}
+.introduction .map {
+  width: 300px;
+  position: absolute;
+}
+.introduction .flag {
+  width: 150px;
+  opacity: 0.5;
+  position: absolute;
+}
+.introduction .Australia,
+.introduction .Canada,
+.introduction .uk,
+.introduction .usa {
+  position: absolute;
+  z-index: 5;
+}
+.introduction .Australia {
+  transform: rotateZ(-45deg);
+  top: 600px;
+  left: 500px;
+}
+.introduction .Australia .map {
+  width: 350px;
+}
+.introduction .Australia .flag {
+  transform: rotateZ(65deg);
+  left: 160px;
+  top: 100px;
+}
+.introduction .Canada {
+  top: 450px;
+  left: 100px;
+  transform: rotateZ(10deg);
+}
+.introduction .Canada .flag {
+  width: 150px;
+  transform: rotateZ(-20deg);
+  top: 60px;
+  left: 120px;
+}
+.introduction .uk {
+  transform: rotateZ(-30deg);
+  left: 500px;
+  top: 50px;
+}
+.introduction .uk .map {
+  width: auto;
+  height: 320px;
+}
+.introduction .uk .flag {
+  width: 150px;
+  transform: rotateZ(45deg);
+  top: 120px;
+  left: 50px;
+}
+.introduction .usa {
+  transform: rotateZ(-20deg);
+  left: -100px;
+}
+.introduction .usa .map {
+  width: 400px;
+  top: 120px;
+}
+.introduction .usa .flag {
+  width: 180px;
+  left: 140px;
+  top: 180px;
+}
+.introduction .logo {
+  width: 520px;
+  display: block;
+  position: absolute;
+  top: 180px;
+  left: 185px;
+}
+.introduction .slogan {
+  font-weight: bold;
+  color: #111;
+  text-align: center;
+  font-size: 40px;
+  text-shadow: 0px 0px 2px #686868, 0px 1px 1px #ddd, 0px 2px 1px #d6d6d6, 0px 3px 1px #ccc, 0px 4px 1px #c5c5c5, 0px 5px 1px #c1c1c1, 0px 6px 1px #bbb, 0px 7px 1px #777, 0px 8px 3px rgba(100, 100, 100, 0.4), 0px 9px 5px rgba(100, 100, 100, 0.1), 0px 10px 7px rgba(100, 100, 100, 0.15), 0px 11px 9px rgba(100, 100, 100, 0.2), 0px 12px 11px rgba(100, 100, 100, 0.25), 0px 13px 15px rgba(100, 100, 100, 0.3);
+}
+.introduction .global {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+.service-flow {
+  width: 100%;
+}
+.service-flow .watermark-1,
+.service-flow .watermark-2 {
+  opacity: 0.2;
+  height: 100%;
+  width: 50%;
+  position: absolute;
+}
+.service-flow .watermark-1 {
+  background: url(../img/flow/usa.jpg);
+}
+.service-flow .watermark-2 {
+  left: 50%;
+  background: url(../img/flow/uk.jpg);
+}
+.service-flow .text-wrapper {
+  position: absolute;
+  background-color: transparent;
+  text-align: center;
+  font-weight: bold;
+}
+.service-flow svg {
+  width: 100%;
+}
