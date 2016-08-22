@@ -1,28 +1,21 @@
 {
   "offers": [
     {
-      "originalSchool": "加州大学",
+      "originalSchool": "哥伦比亚大学",
       "rank": "0",
-      "major": "aaaaaaaaa",
-      "name": "Tim5555",
-      "schoolImage": "/img/schools/加州大学.png",
+      "major": "English",
+      "name": "User Name",
+      "schoolImage": "/img/schools/哥伦比亚大学.jpg",
       "id": "b2bc1e3c-619d-43e6-9aa7-1514dbb01775"
     },
     {
-      "originalSchool": "波士顿学院",
+      "originalSchool": "凯尼休斯学院",
       "rank": "0",
-      "major": "几排",
-      "name": "Tim",
-      "schoolImage": "/img/schools/波士顿学院.png",
-      "id": "500ca740-14b8-4ff7-9a50-31837fa8398b"
-    },
-    {
-      "originalSchool": "罗彻斯特大学",
-      "rank": "0",
-      "major": "几排",
-      "name": "Tim",
-      "schoolImage": "/img/schools/罗彻斯特大学.jpg",
-      "id": "7ac4dbcf-f928-43de-9a08-946d04c0150a"
+      "major": "English",
+      "name": "User Name",
+      "schoolImage": "/img/schools/凯尼休斯学院.jpg",
+      "id": "369fa1cc-fc7d-4089-a74c-8cdbb8356c52",
+      "msg": "ddd"
     }
   ],
   "user": {

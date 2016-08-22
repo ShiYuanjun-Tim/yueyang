@@ -56,7 +56,7 @@ const OPERATION={
 
  var OfferEditor = React.createClass({
  	getInitialState() {
-	    return {
+	    return {		msg:"",
 		 	          originalSchool:this.props.originalSchool ||"",
 		 	          rank: this.props.rank||0,
 		 	          major:this.props.major||"",
@@ -66,14 +66,29 @@ const OPERATION={
 		 	   }
 	},
 	 componentWillMount() {
-	       this.pubsub_token=Pubsub.subscribe("offer.select",(topic,offer)=>{
+	       this.selectToken=Pubsub.subscribe("offer.select",(topic,offer)=>{
 	       	//console.log(offer)
 	       	this.setState(offer);
+	       }); 
+	       this.noSelectToken=Pubsub.subscribe("offer.noSelect",(topic,offer)=>{
+	       	//console.log(offer)
+	       	this.resetForm();
 	       });
 	 },
 	 componentWillUnmount() {
-	       Pubsub.unsubscribe(  this.pubsub_token);
+	       Pubsub.unsubscribe(  this.selectToken);
+	       Pubsub.unsubscribe(  this.noSelectToken);
 	 }, 
+	 resetForm(){
+	 	this.setState({
+		 	          originalSchool:"",
+		 	          rank:  0,
+		 	          major: "",
+		 	          name:  "",
+		 	          schoolImage:"",
+		 	          id:null
+		 	   });
+	 },
 	handleChange(e){
 		var state={};
 		state[e.target.dataset.prop]=e.target.value;
@@ -83,15 +98,24 @@ const OPERATION={
 		this.setState({schoolImage:img.path,originalSchool:img.name})
 	},
  	update(){
+ 		if(!this.state.id){
+ 			this.info("Please selected a Offer ,before you  Update");
+ 			return;
+ 		}
  		jq.when( jq.post( "/admin/api/offer/update",this.state ) ).then( ( data, textStatus, jqXHR )=> {
-		   this.props.update(OPERATION.UPDATE,data)
+		   this.props.update(OPERATION.UPDATE,data);
 		});
  	},
  	remove(){
+ 		if(!this.state.id){
+ 			this.info("Please selected a Offer to delete");
+ 			return;
+ 		}
  		jq.when( jq.ajax( "/admin/api/offer/delete/"+this.state.id ) ).then( ( data, textStatus, jqXHR )=> {
 		  //console.log(data,"delete")
 		  // the delete result is a array
  		  this.props.update(OPERATION.DELETE,data[0])
+ 		   this.resetForm();
 		});
  	},
  	insert(){
@@ -101,12 +125,20 @@ const OPERATION={
 		   this.props.update(OPERATION.INSERT,data)
 		});
  	},
-
+ 	info(msg){
+ 		this.timeoutFlag&&window.clearTimeout(this.timeoutFlag);
+ 		this.setState({msg:msg});
+ 		this.timeoutFlag = window.setTimeout(()=> {
+ 			this.setState({msg:""});
+ 			window.clearTimeout(this.timeoutFlag);
+ 		}, 3000);
+ 	},
  	render() {
  		var margin={marginRight:25}
  		return (
  			<div className="row">
 	 			<div className="col-md-6">
+	 				<p className="bg-info text-danger">{this.state.msg}</p>
 	 				<form className="form-horizontal ">
 	 					  <div className="form-group">
 	 					  	<label className=" control-label ">Name</label>
@@ -268,12 +300,12 @@ const DEFAULT_OFFER={
 	  	var newState=!this.state.selected;
 	  	this.setState( {selected:newState});
 	  	//let owner contro
-	  	newState&&this.props.onSelect&&this.props.onSelect(this,offer);
+	  	this.props.onSelect&&this.props.onSelect(this,offer);
 
-	  },
-	  reset(){
-	  		this.setState( {selected:false});
-	  },
+	},
+	reset(){
+			this.setState( {selected:false});
+	},
  	render() {
  		var  attr ={textOverflow: "ellipsis", whiteSpace: "pre-wrap", overflow: "hidden"}; 
  		var style=this.state.selected?{backgroundColor:"#c3b3d9"}:{};
