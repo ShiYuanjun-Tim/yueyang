@@ -1,0 +1,137 @@
+{
+  "data": [{
+    "name": "Meng同学",
+    "originalSchool": "上海理工大学",
+    "scores": {
+      "TOEFL": 101,
+      "GMat": 710
+    },
+    "schools":[{
+      "name": "哥伦比亚大学",
+      "imgUrl": "img/schools/哥伦比亚大学.jpg",
+      "major": "经济政策管理"
+    },{
+      "name": "罗彻斯特大学",
+      "imgUrl": "img/schools/罗彻斯特大学.jpg",
+      "major": "金融专业"
+    },{
+      "name": "波士顿学院",
+      "imgUrl": "img/schools/波士顿学院.png",
+      "major": "金融专业"
+    },{
+      "name": "华盛顿圣路易斯大学",
+      "imgUrl": "img/schools/华盛顿路易斯安那大学.jpg",
+      "major": "金融专业"
+    },{
+      "name": "纽约大学",
+      "imgUrl": "img/schools/纽约大学.png",
+      "major": "市场营销"
+    },{
+      "name": "约翰霍普金斯大学",
+      "imgUrl": "img/schools/约翰霍普金斯大学.jpg",
+      "major": "金融专业"
+    }]
+  },{
+    "name": "Ding同学",
+    "originalSchool": "南京金陵中学河西分校",
+    "scores": {
+      "TOEFL": 92
+    },
+    "schools":[{
+      "name": "密西根州立大学",
+      "imgUrl": "img/schools/密西根州立大学.png",
+      "major": "电子工程专业"
+    }]
+  },{
+    "name": "Li同学",
+    "originalSchool": "上海对外经贸大学",
+    "scores": {
+      "IELTS": "6.0"
+    },
+    "schools":[{
+      "name": "英国约克大学",
+      "imgUrl": "img/schools/英国约克大学.png",
+      "major": "金融专业"
+    }]
+  },{
+    "name": "Wang同学",
+    "originalSchool": "东华大学",
+    "scores": {
+      "TOEFL": 85,
+      "GRE": 310
+    },
+    "schools":[{
+      "name": "德克萨斯大学达拉斯分校",
+      "imgUrl": "img/schools/德克萨斯大学.png",
+      "major": "计算机科学专业"
+    }]
+  },{
+    "name": "Zhang同学",
+    "originalSchool": "西安交通大学苏州附属中学",
+    "scores": {
+      "TOEFL": 91,
+      "SAT": 1860
+    },
+    "schools":[{
+      "name": "加州大学欧文分校",
+      "imgUrl": "img/schools/加州大学.png",
+      "major": "专业待定"
+    }]
+  },{
+    "name": "Gong同学",
+    "originalSchool": "华育中学",
+    "scores": {
+      "TOEFL Junior": 810,
+      "SSAT": 2024
+    },
+    "schools":[{
+      "name": "沙特克圣玛丽高中",
+      "imgUrl": "img/schools/沙特克圣玛丽高中.png",
+      "major": "专业待定"
+    }]
+  },{
+    "name": "Xue同学",
+    "originalSchool": "美国圣约翰保罗二世高中",
+    "scores": {
+      "TOEFL": 73
+    },
+    "schools":[{
+      "name": "美国东北大学",
+      "imgUrl": "img/schools/美国东北大学.jpg",
+      "major": "电气工程专业"
+    }]
+  },{
+    "name": "Wang同学",
+    "originalSchool": "上海新桥职业技术学院",
+    "scores": {
+      "IELTS": 6.0
+    },
+    "schools":[{
+      "name": "美国加州艺术学院",
+      "imgUrl": "img/schools/美国加州艺术学院.jpg",
+      "major": "动漫专业"
+    }]
+  },{
+    "name": "Zhu同学",
+    "originalSchool": "上海立信会计金融学院",
+    "scores": {
+      "IELTS": 6.5
+    },
+    "schools":[{
+      "name": "宾夕法尼亚州立大学帕克分校",
+      "imgUrl": "img/schools/宾夕法尼亚州立大学.jpg",
+      "major": "经济学专业"
+    }]
+  },{
+    "name": "Chen同学",
+    "originalSchool": "上海位育中学（IB）",
+    "scores": {
+      "TOEFL": 94
+    },
+    "schools":[{
+      "name": "凯尼休斯学院",
+      "imgUrl": "img/schools/凯尼休斯学院.jpg",
+      "major": "专业待定"
+    }]
+  }]
+}
