@@ -23,7 +23,7 @@ angular.module('office', []).directive("office",function(Service){
                 .attr("fill","none")
                 .attr("stroke","#171651")
                 .attr("stroke-width","2");*/
-            var eleP = $element.find("p");
+            var eleP = $element.find(".svg-text p");
             var shines = [];
             eleP.each(function(i,dom){
                 var shine = new Shine(dom);
