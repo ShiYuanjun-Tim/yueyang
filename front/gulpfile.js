@@ -7,7 +7,7 @@ var browserSync = require('browser-sync');
 var wiredep = require('wiredep').stream;
 
 var tempPath = ".tmp/";
-var deployPath = "dist/";
+var deployPath = "../public";
 var serverPath = "develop/";
 var jsSrc = "app/js/**/*.js";
 var cssSrc = "app/css/**/*.css";
