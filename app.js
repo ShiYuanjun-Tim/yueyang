@@ -3,6 +3,10 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
+
 var log = require("./service/logger").log;
 var uuid = require('node-uuid');
 var env = require('get-env')({
@@ -15,6 +19,7 @@ log.warn("APP RUNING IN "+env +" MODE");
 
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
+var apis = require('./routes/api');
 
 var app = express();
 
@@ -34,6 +39,13 @@ app.use(function (req, res, next) {
         next(); 
 });
 
+passport.use(new LocalStrategy(
+  function(username, password, done) { 
+      log.debug("###############"+username, password);
+       return done(null, { username: "username" });
+  }
+));
+
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // app.use(compression);
@@ -42,8 +54,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/',express.static(path.join(__dirname, 'public'))); 
 
+  app.use(session({ secret: 'keyboard cat' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+
 app.use('/', routes);
 app.use('/admin', admin);
+app.use('/apis', apis);
+
 
 
 // catch 404 and forward to error handler
