@@ -1,0 +1,32 @@
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		// The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+		meta(name='description', content='')
+		meta(name='author', content='')
+		title Signin
+		// Bootstrap core CSS
+		link(rel='stylesheet', href='//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css')
+		// IE10 viewport hack for Surface/desktop Windows 8 bug
+		link(href='/stylesheets/login.css', rel='stylesheet')
+		// Just for debugging purposes. Don't actually copy these 2 lines!
+		//if lt IE 9
+			[if lt IE 9]
+			script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+			script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+			<!--[endif]
+	body
+		.container
+			form(action="/admin/auth",method="post").form-signin
+				h2.form-signin-heading Please sign in
+				label.sr-only(for='username')  Account
+				input#username.form-control(name="username",type='text', placeholder='Account', required='', autofocus='')
+				label.sr-only(for='password') Password
+				input#password.form-control(name="password",type='password', placeholder='Password', required='')
+				.checkbox
+					label
+						input(type='checkbox', value='remember-me')
+						|	Remember me
+				button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in

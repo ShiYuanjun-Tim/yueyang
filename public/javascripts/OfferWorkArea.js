@@ -13,7 +13,7 @@ const OPERATION={
  	    return   { offers:[]}; 
  	},
   	componentDidMount() {
-  	    jq.get("/admin/api/offers").done((data)=>{
+  	    jq.get("/apis/api/offers").done((data)=>{
   	    	//console.log(data);
   	    	this.setState({offers:data})
   	    });  
@@ -193,7 +193,7 @@ var SchoolSelect = React.createClass({
 		return {selected:"/img/case.jpg"};
 	},
 	componentDidMount() {
-		  jq.get("/admin/api/schoolImgs").done((data)=>{
+		  jq.get("/apis/api/schoolImgs").done((data)=>{
 	  		//console.log(data);
 	  		this.imgs=data;
 	  		
