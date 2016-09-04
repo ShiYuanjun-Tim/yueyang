@@ -6,8 +6,9 @@ var db=dao.db;
 
 router.use(function(req,res,next){
 	var path=req.path;
-	res.log.info("-------",req.originalUrl);
-	// if(path!="/login" && ){
+	// var isLoggedIn = require('connect-ensure-login').ensureLoggedIn();
+	// res.log.info( `path :${path}, logined:${isLoggedIn}`);
+	// if(path!="/login" && isLoggedIn){
 	// 	res.log.info( "redirect to login page");
 	// 	res.redirect("/admin/login")
 	// }
@@ -17,20 +18,27 @@ router.use(function(req,res,next){
 
 
 /* page request. */
-router.get('/', function(req, res, next) {
+router.get('/', 
+// passport.authenticate('local', { failureRedirect: '/admin/login' }),
+  require('connect-ensure-login').ensureLoggedIn("/admin/login"),
+	function(req, res, next) {
    res.render("admin/index")
 });
 
-router.post('/auth', 
-	passport.authenticate('local', { successRedirect: '/admin',
-                                   failureRedirect: '/admin/login' })
-);
 
 router.get('/login', 
+  function(req, res, next) {
+     res.render("admin/login")
+  }
+);
+
+router.post('/auth', 
+	passport.authenticate('local', {  failureRedirect: '/admin/login' }),
 	function(req, res, next) {
-	   res.render("admin/login")
+	   res.redirect("/admin")
 	}
 );
+
 router.get('/dev', function(req, res, next) {
    res.render("admin/adminDev")
 });
@@ -44,7 +52,25 @@ post -> /api/offer/new
 get -> /api/offer/delete/{id}
 
 */
- 
+
+function parse(body){
+	var newO={};
+	for(var key in body){
+		var v=body[key],match  = /(\w+)\[(\w+)\]/.exec(key);
+		if(match){
+			var outK = match[1] , inK=match[2];
+			 
+			var obj=newO[outK]||{};
+			obj[inK] = v;
+			newO[outK]= obj;
+			continue;
+		}
+		newO[key]=v;
+	}
+	return newO;
+}
+
+
 router.get('/api/offer/delete/:offerId', function(req, res, next) {
 	res.log.debug("parameters: ",req.params);
  	const offer=db.get("offers").remove({id:req.params.offerId}).value();
@@ -54,8 +80,9 @@ router.get('/api/offer/delete/:offerId', function(req, res, next) {
  });
 
 router.post('/api/offer/update', function(req, res, next) {
-	res.log.debug("update offer:" ,req.body);
- 	const offer=db.get("offers").find({id:req.body.id}).assign(req.body).value();
+	var obj =parse(req.body)
+	res.log.debug("update offer:" ,req.body,obj);
+ 	const offer=db.get("offers").find({id:req.body.id}).assign(obj).value();
  	db.write().then(()=>{
  		res.json(offer);
 	})

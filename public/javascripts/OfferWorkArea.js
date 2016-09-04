@@ -35,21 +35,18 @@ const OPERATION={
   				newList.splice(ind,1,offer);
   				break;
   		}
-  		
   		this.setState({offers:newList})
   	},
  	render() {
- 		 
-
- 		return ( 
- 		<div className="row"> 
- 			<div className="col-md-12">
- 				<OfferEditor  update={this.editorDone}   /> 	
- 			</div>
- 			<div className="col-md-12">
- 				<OfferHome offers={this.state.offers}  />
- 			</div>
- 		 </div>
+ 		return (
+	 		<div className="row"> 
+	 			<div className="col-md-12">
+	 				<OfferEditor  update={this.editorDone} /> 
+	 			</div>
+	 			<div className="col-md-12">
+	 				<OfferHome offers={this.state.offers}  /> 
+	 			</div>
+	 		 </div>
  		 );
  	}
  });
@@ -62,7 +59,8 @@ const OPERATION={
 		 	          major:this.props.major||"",
 		 	          name: this.props.name||"",
 		 	          schoolImage:this.props.schoolImage ||"",
-		 	          id:null
+		 	          id:null,
+		 	          scores:this.props.scores||{}
 		 	   }
 	},
 	 componentWillMount() {
@@ -79,6 +77,33 @@ const OPERATION={
 	       Pubsub.unsubscribe(  this.selectToken);
 	       Pubsub.unsubscribe(  this.noSelectToken);
 	 }, 
+	  componentWillUpdate(nextProp,nextState){
+		console.log("componentWillUpdate",nextProp,nextState);
+		this.textarea.value=this.getScores(nextState)
+	  },
+	 getScores(state){
+	 	var scores=state.scores,val=[];
+	 	if(scores){
+			for(var k in scores){
+				var v=scores[k];
+				val.push(`${k}:${v}` );
+			}
+	 	}
+		return val.join("\n");
+	 },
+	 scoresChange(e){
+		var scores=e.target.value.split("\n");
+		console.log(scores)
+		var result=scores.reduceRight((prev,curr)=>{
+			prev=prev||{};
+			prev[curr.split(":")[0]] = +(curr.split(":")[1]);
+			return prev;
+		},{})
+		if(!jq.isEmptyObject(result)){
+			this.setState({scores:result})
+		}
+		
+	 },
 	 resetForm(){
 	 	this.setState({
 		 	          originalSchool:"",
@@ -86,7 +111,8 @@ const OPERATION={
 		 	          major: "",
 		 	          name:  "",
 		 	          schoolImage:"",
-		 	          id:null
+		 	          id:null,
+				scores:{}
 		 	   });
 	 },
 	handleChange(e){
@@ -144,15 +170,7 @@ const OPERATION={
 	 					  	<label className=" control-label ">Name</label>
 							  <input  className="form-control  " type="text" onChange={this.handleChange}   data-prop="name"  value={this.state.name}/>
 						</div>	
-						{/*<div className="form-group">
-						  	<label className=" control-label ">School </label>
-							  <input  className="form-control  " type="text"  onChange={this.handleChange}  data-prop="originalSchool" value={this.state.originalSchool}/>
-						</div>
 						 
-						<div className="form-group">
-					 		 <label className=" control-label ">Rank</label>
-							  <input   className="form-control  " type="number"  onChange={this.handleChange} data-prop="rank" value={this.state.rank} />
-						</div>	 	*/}
 						<div className="form-group">
 							<label className=" control-label "  >School</label>
 							<SchoolSelect selected={this.state.schoolImage} onChange={this.schoolChange}/>
@@ -160,6 +178,10 @@ const OPERATION={
 						<div className="form-group">
 							<label className=" control-label "  >Major</label>
 							<input  className="form-control  " type="text"  onChange={this.handleChange} data-prop="major" value={this.state.major}/>
+						</div>	 
+						<div className="form-group">
+							<label className=" control-label "  >Scores格式：每行都是一条成绩 ,用冒号:(注意英文中的冒号)隔开</label>
+							<textarea name="scores"   className="form-control  " onBlur={this.scoresChange}   ref={(ref)=>{this.textarea=ref}}/>
 						</div>	 
 					</form>
 					 
@@ -271,7 +293,8 @@ const DEFAULT_OFFER={
 		 	 rank:0,
 		 	 name:"i was luky !!! ",
 		 	 major:"CODING",
-		 	 schoolImage:"/img/case.jpg"
+		 	 schoolImage:"/img/case.jpg",
+		 	 scores:{}
 		 };
 
 /*
@@ -295,6 +318,7 @@ const DEFAULT_OFFER={
 			major:this.props.major,
 			schoolImage:this.props.schoolImage,
 			id:this.props.id
+			,scores:this.props.scores
 	  	};
 	  	// change css
 	  	var newState=!this.state.selected;
@@ -309,12 +333,16 @@ const DEFAULT_OFFER={
  	render() {
  		var  attr ={textOverflow: "ellipsis", whiteSpace: "pre-wrap", overflow: "hidden"}; 
  		var style=this.state.selected?{backgroundColor:"#c3b3d9"}:{};
+ 		var score= [];
+ 		for(var scor in this.props.scores){
+			score.push(<div><small className="text-left">{scor}：{this.props.scores[scor]}</small><br/></div>) 
+ 		}
  		return ( 
  		<a href="#" className="btn btn-default truncate" className="thumbnail " style={style}  onClick={this.handleClick}>
 			<img src={this.props.schoolImage} alt=""/>
 			<strong className="text-left" style={attr}>{this.props.name}</strong><br/>
+			{score}
 			<small className="text-left">录取院校：{this.props.originalSchool}</small><br/>
-			{/*<small className="text-left">综合排名第{this.props.rank}位</small>*/}
 			<small className="text-left">录取专业 : {this.props.major}</small>
 		</a>);
  	}

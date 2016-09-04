@@ -32,6 +32,7 @@ db.defaults({ offers: [
 
 module.exports ={
   db:db,
+  findById:(collection,id)=>db.get(collection).find({id:id}).value(  ),
   getAll:(colletionName)=>db.get(colletionName).value(),
   removeById:(collection,id)=>{db.get(collection).remove({id:id}).value();return db.write();},
   updateById:(collection,id,object)=>{db.get(collection).find({id:id}).assign(object).value();return db.write();},

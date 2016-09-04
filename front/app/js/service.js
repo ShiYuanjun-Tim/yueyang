@@ -35,7 +35,7 @@ angular.module('Service', []).factory("Service",function($http){
         },
         getOffers: function(success){
             $http( {
-                url: host + "offer.json",
+                url:   "/apis/api/offers",
                 method: "GET"
             }).success(function(data,header,config,status){
                 success(data);

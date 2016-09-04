@@ -7,8 +7,8 @@
                 Service.getOffers(function(data){
                     console.log(data);
                     var MINQTY = 10;
-                    var datas = data.data;
                     var arr = [];
+                    var datas = data.data;
                     datas.forEach(function(item){
                         var student = {
                             name: item.name,
@@ -18,6 +18,20 @@
                             arr.push(angular.extend({},student,{school: school}));
                         });
                     });
+
+                    // var datas=data;
+                    //  datas.forEach(function(item){
+                    //     item.school = {
+                    //         "name":  item.originalSchool,
+                    //           "imgUrl": item.schoolImage,
+                    //           "major": item.major
+                    //     }
+                    //         arr.push(item);
+                    //     }
+                        
+                    // });
+
+
                     if(arr.lenggth <= MINQTY){
                         $scope.offersArr = [arr];
                     }else{

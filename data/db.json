@@ -2,26 +2,36 @@
   "offers": [
     {
       "originalSchool": "哥伦比亚大学",
-      "rank": "0",
+      "scores": {
+        "GMat": "7103333",
+        "TOEFL": "101"
+      },
       "major": "English",
       "name": "User Name",
       "schoolImage": "/img/schools/哥伦比亚大学.jpg",
-      "id": "b2bc1e3c-619d-43e6-9aa7-1514dbb01775"
+      "id": "b2bc1e3c-619d-43e6-9aa7-1514dbb01775",
+      "msg": ""
     },
     {
       "originalSchool": "凯尼休斯学院",
-      "rank": "0",
       "major": "English",
       "name": "User Name",
       "schoolImage": "/img/schools/凯尼休斯学院.jpg",
       "id": "369fa1cc-fc7d-4089-a74c-8cdbb8356c52",
-      "msg": "ddd"
+      "msg": "",
+      "scores": {
+        "dasdas": "2222111",
+        "cccc": "2222"
+      }
     }
   ],
-  "user": {
-    "name": "aa",
-    "pass": "aa"
-  },
+  "user": [
+    {
+      "id": "u1234567890-098765678987545678987",
+      "name": "linkuniadmin",
+      "pass": "+_)(8765$#@!"
+    }
+  ],
   "schoolsImage": [
     {
       "id": "img1",
