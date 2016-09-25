@@ -5,32 +5,22 @@
             restrict: 'E',
             controller: function($scope, $element,$timeout){
                 Service.getOffers(function(data){
-                    console.log(data);
                     var MINQTY = 10;
                     var arr = [];
-                    var datas = data.data;
+                    var datas = data;
                     datas.forEach(function(item){
                         var student = {
                             name: item.name,
-                            scores: item.scores
+                            scores: item.scores,
+                            school:{
+                                 name: item.originalSchool,
+                                  imgUrl: item.schoolImage,
+                                  major: item.major
+                            }
                         };
-                        item.schools.forEach(function(school){
-                            arr.push(angular.extend({},student,{school: school}));
-                        });
+                        arr.push(student)
+                         
                     });
-
-                    // var datas=data;
-                    //  datas.forEach(function(item){
-                    //     item.school = {
-                    //         "name":  item.originalSchool,
-                    //           "imgUrl": item.schoolImage,
-                    //           "major": item.major
-                    //     }
-                    //         arr.push(item);
-                    //     }
-                        
-                    // });
-
 
                     if(arr.lenggth <= MINQTY){
                         $scope.offersArr = [arr];

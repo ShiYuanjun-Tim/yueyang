@@ -90,7 +90,8 @@ router.post('/api/offer/update', function(req, res, next) {
 
 router.post('/api/offer/new', function(req, res, next) {
 	res.log.debug("new offer:" ,req.body);
- 	const offer=db.get("offers").insert(req.body).value();
+	var obj =parse(req.body)
+ 	const offer=db.get("offers").insert(obj).value();
  	db.write().then(()=>{
  		res.json(offer);
 	})
